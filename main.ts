@@ -1,3 +1,23 @@
+function saywinner () {
+    if (Total_Rounds == 20) {
+        if (PA == PB) {
+            OLED.writeStringNewLine("Draw")
+        }
+        OLED.clear()
+    }
+    if (Total_Rounds == 20) {
+        if (PA > PB) {
+            OLED.writeStringNewLine("Player A is the winner!")
+        }
+        OLED.clear()
+    }
+    if (Total_Rounds == 20) {
+        if (PB > PA) {
+            OLED.writeStringNewLine("Player B is the winner")
+        }
+        OLED.clear()
+    }
+}
 function updateScoreboard () {
     OLED.clear()
     OLED.writeStringNewLine("Player A: " + PA)
@@ -7,6 +27,7 @@ function updateScoreboard () {
     OLED.writeStringNewLine("Draws: " + Draw)
     OLED.newLine()
     OLED.writeStringNewLine("Rounds: " + Total_Rounds)
+    saywinner()
 }
 input.onButtonPressed(Button.A, function () {
     basic.showLeds(`
@@ -60,8 +81,8 @@ function reset () {
     basic.pause(2000)
     updateScoreboard()
 }
-let Total_Rounds = 0
 let Draw = 0
 let PB = 0
 let PA = 0
+let Total_Rounds = 0
 reset()
